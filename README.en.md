@@ -1,8 +1,8 @@
 # Modular Schematic Layout
 
-**Teach your AI agent to draw clear, readable circuit schematics with visible signal paths.**
+**Teach your AI agent to draw readable circuit schematics with a consistent visual language.**
 
-An Agent Skill for hardware design. It improves functional grouping, visible wiring, page composition, spacing, and annotations while preserving the existing netlist, devices, and logic. Use it for schematic generation, netlist conversion, layout cleanup, and readability reviews.
+An Agent Skill for hardware design, built around functional relationships, visible topology, and a shared visual language. It derives layouts from component roles across circuit types and reuses one project style for symbols, text, lines, spacing, and pages. Use it for schematic generation, netlist conversion, layout cleanup, and readability reviews while preserving the existing circuit.
 
 [中文](README.md) · English · [Skill instructions](SKILL.md) · [Download](https://github.com/Ausanx/modular-schematic-layout/releases/latest)
 
@@ -25,13 +25,13 @@ Click either image to view the original. The first image is a detail and the sec
 - Wires expose the main power paths around the core ICs, with feedback and filtering nearby.
 - Vertical decoupling branches use standard power and ground symbols; labels remain available for signals crossing module boundaries.
 
-## What's new in v0.2.0
+## What's new in v0.3.0
 
-- **More circuit patterns:** relay drivers, RC inputs, divider/comparator stages, gate chains, cascades, and dedicated power units now have concrete [layout guidance](references/layout-patterns.md).
-- **Topology before frames:** align repeated functional channels rather than parking passive components in a separate matrix.
-- **Evidence from visible wires:** a net name on a continuous wire does not make it a label jump. Distinguish named nodes, actual label jumps, and connections an image cannot resolve.
-- **Page composition and typography:** arrange sheets by function and reading scale; check reference/value anchors after rotation, decoupling associations, and note placement.
-- **Rendered checks:** synthetic image review and SVG drawing cases supplement the original text cases. Frames and vertical capacitors alone are insufficient acceptance criteria.
+- **General design principles:** function determines proximity; topology determines shape; reading effort guides tradeoffs; visual rules remain consistent; semantics take priority over appearance.
+- **One project style:** establish symbol conventions, typography, line weights, junctions, spacing, annotation anchors, ports, frames, and color meanings before the first block, then reuse them across sheets.
+- **Role-based placement:** express paths, branches, feedback, pairs, bridges, coupling, and shared resources. A core IC, a unidirectional chain, or a ground reference is not required in every circuit.
+- **Examples explain principles:** the [layout reference](references/layout-patterns.md) is organized by functional relationships, so unfamiliar devices can be handled without a dedicated template.
+- **Cross-sheet review:** retain wire-tracing and rendered checks, and add floating-bridge and bidirectional-coupling fixtures to examine consistency across different topologies.
 
 The before/after screenshots above remain early examples. This revision uses separate synthetic fixtures for testing and does not redraw that project.
 
@@ -87,15 +87,14 @@ Do not modify the source yet.
 
 | Rule | Expected behavior |
 | --- | --- |
-| Partition by function | Give each block a title, confirmed parameters, and visible space |
-| Expose the main path | Arrange input, processing, and output from left to right; wire critical paths directly |
-| Show logic relationships | Reuse available functional/multiunit symbols and retain complete pin mappings |
-| Keep feedback nearby | Stack divider resistors vertically and wire the midpoint to the feedback pin |
-| Use consistent symbols | Draw shunt capacitors vertically, point ground symbols downward, and retain polarity |
+| Group by function | Place related parts together; let function determine frames and pages |
+| Expose topology | Show paths, branches, feedback, pairs, and coupling in an appropriate arrangement |
+| Orient by role | Use consistent treatment for paths, branches, and shared resources without forcing identical topology shapes |
+| Share one visual language | Reuse symbol conventions, typography, lines, spacing, ports, frames, and color meanings across the project |
 | Limit label jumps | Use them across modules, pages, or necessary controls; names on continuous wires can remain |
 | Compose pages and annotations | Use function and reading scale to set density; keep text close to its symbol and retain operating notes |
 | Preserve electrical identity | Retain pin numbers, values, label scopes, and distinct ground networks |
-| Verify the result | Compare pin-to-net membership; load, run ERC, and inspect rendered previews when tools are available |
+| Verify the result | Inspect rendered pages and cross-sheet consistency; compare available baselines and report checks actually performed |
 
 See [SKILL.md](SKILL.md) for the full workflow and exceptions. The skill instructions are currently written in Chinese; the examples above can be used in English.
 
@@ -116,7 +115,7 @@ For existing designs, retain and compare the component-pin-to-net baseline. For 
 
 Keep AGND, PGND, DGND, and other distinct networks separate unless the input design explicitly defines their connection. Readability, screenshots, and SVG previews do not establish electrical correctness or replace ratings, stability, and PCB checks.
 
-Five reusable [test scenarios](evals/evals.json) cover a Buck layout, a text review, visual wire tracing, a two-channel logic SVG, and pagination. The visual review uses a public [synthetic fixture](evals/fixtures/labeled-paths.png). See [test instructions](evals/README.md) for procedure and limits. These cases do not guarantee satisfactory layout on every schematic and are not native EDA end-to-end validation or certification.
+Six reusable [test scenarios](evals/evals.json) cover layout, text review, visual wire tracing, SVG drawing, pagination, and cross-sheet style review across different topologies. Image cases use public synthetic fixtures. See [test instructions](evals/README.md) for procedure and limits. These examples help reveal gaps; they do not validate every circuit type or constitute native EDA end-to-end validation or certification.
 
 ## Repository
 
