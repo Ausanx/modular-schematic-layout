@@ -25,15 +25,15 @@ Click either image to view the original. The first image is a detail and the sec
 - Wires expose the main power paths around the core ICs, with feedback and filtering nearby.
 - Vertical decoupling branches use standard power and ground symbols; labels remain available for signals crossing module boundaries.
 
-## What's new in v0.3.0
+## What's new in v0.4.0
 
-- **General design principles:** function determines proximity; topology determines shape; reading effort guides tradeoffs; visual rules remain consistent; semantics take priority over appearance.
-- **One project style:** establish symbol conventions, typography, line weights, junctions, spacing, annotation anchors, ports, frames, and color meanings before the first block, then reuse them across sheets.
-- **Role-based placement:** express paths, branches, feedback, pairs, bridges, coupling, and shared resources. A core IC, a unidirectional chain, or a ground reference is not required in every circuit.
-- **Examples explain principles:** the [layout reference](references/layout-patterns.md) is organized by functional relationships, so unfamiliar devices can be handled without a dedicated template.
-- **Cross-sheet review:** retain wire-tracing and rendered checks, and add floating-bridge and bidirectional-coupling fixtures to examine consistency across different topologies.
+- **Organize by reading task:** overviews explain system relationships, implementation sheets expose local topology, and interface maps support pin lookup. Share a style while allowing different shapes and densities.
+- **Repeat complete functions:** arrays of complete channels, connectors, or banks can aid comparison. Show actual ranges and exceptions rather than separating parts by type.
+- **Choose wires and labels by role:** prefer wires for adjacent cascade stages and critical local paths; allow ports, labels, and valid buses for shared controls and dense interface maps. Preserve indices, aliases, and pin assignments.
+- **Use frames where useful:** spacing, alignment, and short headings may already establish boundaries. Keep graphical frames, hierarchy symbols, and component symbols semantically distinct.
+- **Make information easy to find:** identify decoupling ownership, sheet destinations, and assembly conditions; reduce repeated library-field clutter. Verify a reader can find the function, understand its local circuit, and locate the physical pin.
 
-The before/after screenshots above remain early examples. This revision uses separate synthetic fixtures for testing and does not redraw that project.
+The general principles and shared project style remain in place. See [SKILL.md](SKILL.md), the [functional layout reference](references/layout-patterns.md), and the new [document organization reference](references/document-architecture.md). The screenshots above remain early examples. This revision adds an independently constructed planning test and does not redraw that project.
 
 ## Install
 
@@ -68,10 +68,10 @@ You can also describe the task and let a client with skill discovery select the 
 **Generate from a netlist:**
 
 ```text
-Create a modular schematic from this confirmed netlist. Put inputs on the
-left and outputs on the right. Place the main path and feedback around the
-core IC, and use ports for control signals crossing module boundaries.
-Verify actual pin definitions before drawing. Preserve connectivity.
+Create a modular schematic from this confirmed netlist. Identify paths,
+branches, feedback, paired structures, and shared resources before choosing
+the layout. Use clear interfaces across blocks. Preserve actual pin mappings
+and reuse one project style across all sheets.
 ```
 
 **Review a schematic:**
@@ -87,11 +87,11 @@ Do not modify the source yet.
 
 | Rule | Expected behavior |
 | --- | --- |
-| Group by function | Place related parts together; let function determine frames and pages |
+| Group by function | Place related parts together; repeat complete cells where useful and organize pages by reading task |
 | Expose topology | Show paths, branches, feedback, pairs, and coupling in an appropriate arrangement |
 | Orient by role | Use consistent treatment for paths, branches, and shared resources without forcing identical topology shapes |
 | Share one visual language | Reuse symbol conventions, typography, lines, spacing, ports, frames, and color meanings across the project |
-| Limit label jumps | Use them across modules, pages, or necessary controls; names on continuous wires can remain |
+| Limit label jumps | Allow boundaries, shared controls, and dense endpoint maps; names on continuous wires can remain |
 | Compose pages and annotations | Use function and reading scale to set density; keep text close to its symbol and retain operating notes |
 | Preserve electrical identity | Retain pin numbers, values, label scopes, and distinct ground networks |
 | Verify the result | Inspect rendered pages and cross-sheet consistency; compare available baselines and report checks actually performed |
@@ -115,7 +115,7 @@ For existing designs, retain and compare the component-pin-to-net baseline. For 
 
 Keep AGND, PGND, DGND, and other distinct networks separate unless the input design explicitly defines their connection. Readability, screenshots, and SVG previews do not establish electrical correctness or replace ratings, stability, and PCB checks.
 
-Six reusable [test scenarios](evals/evals.json) cover layout, text review, visual wire tracing, SVG drawing, pagination, and cross-sheet style review across different topologies. Image cases use public synthetic fixtures. See [test instructions](evals/README.md) for procedure and limits. These examples help reveal gaps; they do not validate every circuit type or constitute native EDA end-to-end validation or certification.
+Seven reusable [test scenarios](evals/evals.json) cover layout, text review, visual wire tracing, SVG drawing, pagination, cross-topology style, and document organization with interface mapping. Images and abstract tasks are independently synthetic. See [test instructions](evals/README.md) for procedure and limits. These examples help reveal gaps; they do not validate every circuit type or constitute native EDA end-to-end validation or certification.
 
 ## Repository
 
