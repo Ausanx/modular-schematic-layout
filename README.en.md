@@ -25,6 +25,14 @@ Click either image to view the original. The first image is a detail and the sec
 - Wires expose the main power paths around the core ICs, with feedback and filtering nearby.
 - Vertical decoupling branches use standard power and ground symbols; labels remain available for signals crossing module boundaries.
 
+## What's new in v0.4.1
+
+- **No occlusion at delivery:** inspect all visible text, symbols, wires, and page edges using actual rendered bounds. Render again after repairs and inspect full pages and dense details.
+- **Keep fields beside their component:** group references, values, and required specifications locally. Reposition them after moves, rotations, mirrors, or copies; unrelated wires and neighboring parts must not confuse ownership.
+- **Rearrange crowded areas:** adjust within the shared local annotation zones, then increase nearby spacing. Do not move fields far away, shrink text, or mask conflicts. Preserve legitimate pin, junction, and label-anchor contacts.
+
+An independent synthetic [SVG annotation task](evals/fixtures/annotation-collisions.png) checks both collisions and field ownership. The skill defines acceptance checks; generated results still require inspection. The early screenshots above do not prove compliance with this revision.
+
 ## What's new in v0.4.0
 
 - **Organize by reading task:** overviews explain system relationships, implementation sheets expose local topology, and interface maps support pin lookup. Share a style while allowing different shapes and densities.
@@ -93,6 +101,7 @@ Do not modify the source yet.
 | Share one visual language | Reuse symbol conventions, typography, lines, spacing, ports, frames, and color meanings across the project |
 | Limit label jumps | Allow boundaries, shared controls, and dense endpoint maps; names on continuous wires can remain |
 | Compose pages and annotations | Use function and reading scale to set density; keep text close to its symbol and retain operating notes |
+| Prevent occlusion and detached fields | Inspect actual final bounds; keep fields locally associated with their component and recheck after transforms or copies |
 | Preserve electrical identity | Retain pin numbers, values, label scopes, and distinct ground networks |
 | Verify the result | Inspect rendered pages and cross-sheet consistency; compare available baselines and report checks actually performed |
 
@@ -115,7 +124,7 @@ For existing designs, retain and compare the component-pin-to-net baseline. For 
 
 Keep AGND, PGND, DGND, and other distinct networks separate unless the input design explicitly defines their connection. Readability, screenshots, and SVG previews do not establish electrical correctness or replace ratings, stability, and PCB checks.
 
-Seven reusable [test scenarios](evals/evals.json) cover layout, text review, visual wire tracing, SVG drawing, pagination, cross-topology style, and document organization with interface mapping. Images and abstract tasks are independently synthetic. See [test instructions](evals/README.md) for procedure and limits. These examples help reveal gaps; they do not validate every circuit type or constitute native EDA end-to-end validation or certification.
+Eight reusable [test scenarios](evals/evals.json) cover layout, text review, visual wire tracing, SVG drawing, pagination, cross-topology style, document organization with interface mapping, and actual text placement with field ownership. Images and abstract tasks are independently synthetic. See [test instructions](evals/README.md) for procedure and limits. These examples help reveal gaps; they do not validate every circuit type or constitute native EDA end-to-end validation or certification.
 
 ## Repository
 
