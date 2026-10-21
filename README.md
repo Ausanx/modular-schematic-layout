@@ -5,7 +5,7 @@
 | Skill | 适用任务 | 核心关注 |
 | --- | --- | --- |
 | [modular-schematic-layout](modular-schematic-layout/SKILL.md) | 绘制、生成、重排和审查原理图 | 功能分组、拓扑可见、统一视觉语言、分页、文字归属和无遮挡 |
-| [pcb-design-guidelines](pcb-design-guidelines/SKILL.md) | PCB 规划、布局、布线指导和板图审查 | 约束驱动的分区、关键回路与回流、层叠/阻抗、热、隔离、装配和制造 |
+| [pcb-design-guidelines](pcb-design-guidelines/SKILL.md) | 从已有原理图制定逐步 PCB 施工指南，或审查 PCB | 可追溯器件/网络步骤、约束化尺寸计算、关键回路与回流、层叠/阻抗、制造和验证 |
 
 中文 · [English](README.en.md) · [Releases](https://github.com/Ausanx/modular-schematic-layout/releases)
 
@@ -47,6 +47,8 @@ npx skills add Ausanx/modular-schematic-layout --skill pcb-design-guidelines --a
 
 v0.5.0 GitHub Release 提供独立的 [modular-schematic-layout.skill](https://github.com/Ausanx/modular-schematic-layout/releases/download/v0.5.0/modular-schematic-layout.skill) 和 [pcb-design-guidelines.skill](https://github.com/Ausanx/modular-schematic-layout/releases/download/v0.5.0/pcb-design-guidelines.skill) 下载包。手动安装时，只复制所需目录及其 `SKILL.md` 和 `references/`，不要把另一个 skill 或评测夹具混入安装目录。
 
+PCB 施工指南和线宽计算辅助脚本是在 v0.5.0 之后加入 `main` 的更新；该旧 Release 包不包含这些新内容。安装最新版请使用上面的 Skills CLI，或从仓库 `main` 复制 `pcb-design-guidelines/` 中的 `SKILL.md`、`references/` 与 `scripts/`。
+
 ## 开始使用
 
 原理图：
@@ -62,15 +64,16 @@ PCB：
 
 ~~~text
 $pcb-design-guidelines
-审查这份 PCB 的分区、关键电源回路、回流、层叠、阻抗、热、
-隔离、装配和可制造性。先列出已知约束与缺失输入，再按证据给出
-优先级建议，并区分已运行与未运行的 DRC、SI、热和 DFM 检查。
+根据这份原理图和器件/板厂资料，给我一份可照着完成 PCB 的逐步指南。
+列出 RefDes、网络端点、器件邻接、每一步 CAD 操作和完成条件；对电源
+线给出有来源和假设的线宽/压降计算，对阻抗和安规参数标出待确认输入。
+最后列出 KiCad 9 规则设置、DRC 和制造文件验收步骤；不要声称未运行的检查通过。
 ~~~
 
 ## 验证与边界
 
 - 原理图 evals：见 [modular-schematic-layout/evals](modular-schematic-layout/evals/README.md)，包含 8 个布局、图像审查、SVG 绘制、分页、跨拓扑风格、接口映射和文字避让场景。
-- PCB evals：见 [pcb-design-guidelines/evals](pcb-design-guidelines/evals/README.md)，覆盖电源回路/回流、混合信号与高速约束、机械/装配/测试/板厂限制。
+- PCB evals：见 [pcb-design-guidelines/evals](pcb-design-guidelines/evals/README.md)，覆盖审查、完整原理图到施工指南、具体线宽/压降计算及输入不足时的局部阻断。
 - 两项 skill 都要求保留用户确认的网络、器件、封装、极性、隔离和机械身份；缺少数据时标出假设，不用整齐外观替代电气证据。
 - 标准只作为适用范围和验证来源，不复制标准正文，也不代表自动符合标准或完成认证。参见[原理图标准索引](modular-schematic-layout/references/standards-and-sources.md)和[PCB 标准索引](pcb-design-guidelines/references/standards-and-sources.md)。
 - 没有实际运行 ERC、DRC、阻抗场求解、热/载流计算、Gerber/DFM 或板厂检查时，输出不得写成“已通过”。
@@ -86,6 +89,7 @@ modular-schematic-layout/
 ├── pcb-design-guidelines/
 │   ├── SKILL.md
 │   ├── references/
+│   ├── scripts/
 │   └── evals/
 ├── README.md
 └── README.en.md
