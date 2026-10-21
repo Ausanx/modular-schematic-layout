@@ -32,7 +32,7 @@
       "prompt": "请查看附件合成原理图，只审查图面美观、可读性、标签使用和文字归属，保存 review.md。逐一检查 A/B/C/D 区，沿可见导线追踪后给出保留项、问题和具体重排建议。图片是唯一输入，不假设有原生工程、网表或 ERC 结果，不重新设计电路。",
       "expected_output": "A 的线圈下端、二极管下端与 MOS 漏极已连续连接；B 的分压中点已直接进入比较器正输入。C 已连通但供电回线过长且 C3 名值脱离符号。D 的 RC 到缓冲输入通过 FILTERED 标签跳转，应改成局部实线。不能把标签跳转直接叫作电气断路。",
       "files": [
-        "evals/fixtures/labeled-paths.png"
+        "modular-schematic-layout/evals/fixtures/labeled-paths.png"
       ],
       "expectations": [
         "A 区识别 K1、D1 与 Q1 漏极之间的连续导线，不因 RLY_DRAIN 名称误称局部标签孤岛。",
@@ -73,8 +73,8 @@
       "prompt": "请查看同一项目的两张合成原理图附件，只审查布局原则的适用性与跨页风格一致性，不重设计、不修改原图。保存 style-review.md 和 style-profile.json。说明每页应保留的拓扑结构、跨页需要统一的视觉差异、以及一套能直接复用于后续图页的项目样式。要求保留器件、连接、极性/耦合及已有参考关系；图片是唯一输入，不假设有网表或 ERC 结果。不要仅列“风格统一”口号，给出具体的样式选择、标注约定、适用范围和跨页验收方法。",
       "expected_output": "保留无源桥接和双向磁耦合各自的拓扑形状；不强制核心 IC、单向链或新增地。实际识别无衬线/衬线字体、颜色/背景、线宽、框角和标注位置差异；采用一套可复用的项目样式，不把不同拓扑画成同样形状。",
       "files": [
-        "evals/fixtures/style-bridge.png",
-        "evals/fixtures/style-coupled.png"
+        "modular-schematic-layout/evals/fixtures/style-bridge.png",
+        "modular-schematic-layout/evals/fixtures/style-coupled.png"
       ],
       "expectations": [
         "实际查看两张图，保留 A 的两臂和中点关系，以及 B 的双绕组/耦合/隔离关系，未要求增添核心 IC 或强行改单向链。",
@@ -105,8 +105,8 @@
       "prompt": "请打开这份合成 SVG 和对应 PNG，只修复原理图的文字排版。交付 corrected.svg、实际渲染的 corrected.png，以及简短的 annotation-review.md，说明实际发现的问题和检查结果。保留全部器件字段、文字内容和字号；只能修改 text 元素的位置、对齐及行距，不能改动导线、符号、结点、框或它们的坐标/变换，不得隐藏文字或用遮白块处理。SVG 的 data-owner 表示字段的真实所属元件。完成后实际查看整页及关键局部，检查字段归属、文字/符号/导线间是否遮挡和页内裁切；正常的导线接引脚、结点接导线与网络标签锚点应保留。此图只有抽象二端器件，不生成原生 EDA 文件或声称通过 ERC。",
       "expected_output": "修复元件字段漂移、文字互压与压住本体/导线的问题，字段仍就近属于各自元件；保留全部固定图形、内容、字号与正常连接，实际渲染并查看。",
       "files": [
-        "evals/fixtures/annotation-collisions.svg",
-        "evals/fixtures/annotation-collisions.png"
+        "modular-schematic-layout/evals/fixtures/annotation-collisions.svg",
+        "modular-schematic-layout/evals/fixtures/annotation-collisions.png"
       ],
       "expectations": [
         "实际打开输入图并交付可解析 corrected.svg、实际渲染 corrected.png 和基于图面的简短检查说明。",
