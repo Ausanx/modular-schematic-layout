@@ -7,6 +7,8 @@ This repository provides two independent Agent Skills for electronics design:
 | [modular-schematic-layout](modular-schematic-layout/SKILL.md) | Drawing, generating, reorganizing, and reviewing schematics | Functional grouping, visible topology, one visual language, pagination, field ownership, and no unresolved occlusion |
 | [pcb-design-guidelines](pcb-design-guidelines/SKILL.md) | PCB planning, placement, routing guidance, and board review | Constraint-driven zoning, critical loops and return paths, stackup/impedance, thermal, isolation, assembly, and manufacturing |
 
+[中文](README.md) · English · [Releases](https://github.com/Ausanx/modular-schematic-layout/releases)
+
 Install either skill independently. A complete hardware flow can use the schematic skill to preserve a confirmed connectivity baseline before the PCB skill applies component, footprint, mechanical, and fabricator constraints. Schematic readability does not replace PCB DRC, impedance, thermal, or DFM checks.
 
 ## Schematic examples

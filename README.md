@@ -7,6 +7,8 @@
 | [modular-schematic-layout](modular-schematic-layout/SKILL.md) | 绘制、生成、重排和审查原理图 | 功能分组、拓扑可见、统一视觉语言、分页、文字归属和无遮挡 |
 | [pcb-design-guidelines](pcb-design-guidelines/SKILL.md) | PCB 规划、布局、布线指导和板图审查 | 约束驱动的分区、关键回路与回流、层叠/阻抗、热、隔离、装配和制造 |
 
+中文 · [English](README.en.md) · [Releases](https://github.com/Ausanx/modular-schematic-layout/releases)
+
 两项 skill 可以分别安装。完整硬件流程通常先用原理图 skill 整理已确认的连接基线，再用 PCB skill 将器件、封装、机械和板厂约束落实到板级；原理图的美观或连通表达不能替代 PCB 的 DRC、阻抗、热和 DFM 检查。
 
 ## 原理图示例
