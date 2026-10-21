@@ -45,7 +45,7 @@ npx skills add Ausanx/modular-schematic-layout --skill modular-schematic-layout 
 npx skills add Ausanx/modular-schematic-layout --skill pcb-design-guidelines --agent codex --global
 ~~~
 
-A GitHub Release also provides separate `modular-schematic-layout.skill` and `pcb-design-guidelines.skill` assets. For manual installation, copy only the selected directory with its `SKILL.md` and `references/`; do not mix the other skill or evaluation fixtures into an installation.
+The v0.5.0 GitHub Release will include separate `modular-schematic-layout.skill` and `pcb-design-guidelines.skill` assets. For manual installation, copy only the selected directory with its `SKILL.md` and `references/`; do not mix the other skill or evaluation fixtures into an installation.
 
 ## Use
 
