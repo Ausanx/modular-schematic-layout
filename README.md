@@ -45,7 +45,7 @@ npx skills add Ausanx/modular-schematic-layout --skill modular-schematic-layout 
 npx skills add Ausanx/modular-schematic-layout --skill pcb-design-guidelines --agent codex --global
 ~~~
 
-v0.5.0 GitHub Release 发布后，将提供独立的 `modular-schematic-layout.skill` 和 `pcb-design-guidelines.skill` 下载包。手动安装时，只复制所需目录及其 `SKILL.md` 和 `references/`，不要把另一个 skill 或评测夹具混入安装目录。
+v0.5.0 GitHub Release 提供独立的 [modular-schematic-layout.skill](https://github.com/Ausanx/modular-schematic-layout/releases/download/v0.5.0/modular-schematic-layout.skill) 和 [pcb-design-guidelines.skill](https://github.com/Ausanx/modular-schematic-layout/releases/download/v0.5.0/pcb-design-guidelines.skill) 下载包。手动安装时，只复制所需目录及其 `SKILL.md` 和 `references/`，不要把另一个 skill 或评测夹具混入安装目录。
 
 ## 开始使用
 
