@@ -70,7 +70,7 @@ $pcb-design-guidelines
 - 原理图 evals：见 [modular-schematic-layout/evals](modular-schematic-layout/evals/README.md)，包含 8 个布局、图像审查、SVG 绘制、分页、跨拓扑风格、接口映射和文字避让场景。
 - PCB evals：见 [pcb-design-guidelines/evals](pcb-design-guidelines/evals/README.md)，覆盖电源回路/回流、混合信号与高速约束、机械/装配/测试/板厂限制。
 - 两项 skill 都要求保留用户确认的网络、器件、封装、极性、隔离和机械身份；缺少数据时标出假设，不用整齐外观替代电气证据。
-- 标准只作为适用范围和验证来源，不复制标准正文，也不代表自动符合标准或完成认证。PCB 参考资料见 [标准与资料索引](pcb-design-guidelines/references/standards-and-sources.md)。
+- 标准只作为适用范围和验证来源，不复制标准正文，也不代表自动符合标准或完成认证。参见[原理图标准索引](modular-schematic-layout/references/standards-and-sources.md)和[PCB 标准索引](pcb-design-guidelines/references/standards-and-sources.md)。
 - 没有实际运行 ERC、DRC、阻抗场求解、热/载流计算、Gerber/DFM 或板厂检查时，输出不得写成“已通过”。
 
 ## 仓库结构

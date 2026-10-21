@@ -71,7 +71,7 @@ checks actually run from proposed DRC, SI, thermal, and DFM checks.
 - Schematic evals: [modular-schematic-layout/evals](modular-schematic-layout/evals/README.md) contains eight layout, image review, SVG drawing, pagination, cross-topology style, interface mapping, and annotation-placement scenarios.
 - PCB evals: [pcb-design-guidelines/evals](pcb-design-guidelines/evals/README.md) covers power-loop/return-path review, mixed-signal and high-speed constraints, and mechanical/assembly/test/fabricator limits.
 - Both skills preserve confirmed networks, components, footprints, polarity, isolation, and mechanical identity. Missing data is marked as an assumption; visual neatness is not electrical evidence.
-- Standards are linked as scoped references, not copied, and do not imply automatic compliance or certification. See the [PCB standards index](pcb-design-guidelines/references/standards-and-sources.md).
+- Standards are linked as scoped references, not copied, and do not imply automatic compliance or certification. See the [schematic standards index](modular-schematic-layout/references/standards-and-sources.md) and [PCB standards index](pcb-design-guidelines/references/standards-and-sources.md).
 - If ERC, DRC, field solving, thermal/current calculations, Gerber/DFM, or fabricator checks were not actually run, output must not claim they passed.
 
 ## Repository layout
