@@ -69,7 +69,7 @@ description: >-
 
 1. 根据接口速率、阻抗、回流、层数、铜厚、材料和板厂能力制定叠层候选；记录介质厚度、参考层、铜厚和阻抗目标的来源。
 2. 为关键网络指定允许层、参考平面、线宽/间距、过孔结构、长度/偏差、差分耦合和拓扑。阻抗目标不能脱离实际叠层和制造公差。
-3. 先布高 di/dt 电源回路、时钟/高速差分、敏感模拟和关键控制，再布一般信号和低速网络。每个优先级都要保留可连续的回流路径。
+3. 先布高 di/dt 电源回路、时钟/高速差分、敏感模拟和关键控制，再布一般信号和低速网络。每个优先级都要保留可连续的回流路径。 See [routing-playbook.md](references/routing-playbook.md) for the per-net routing sheet: endpoints, layers, reference plane, via/return transition, and completion checks.
 4. 需要换层时，让回流有可用的相邻过渡；过孔、反焊盘、平面开口和连接器区域按实际结构检查。避免把“少过孔”作为脱离回流的独立目标。
 5. 铺铜前确认网络、热连接、隔离、平面分割和未连接铜处理。铺铜不是修复错误回流的遮罩；在最终层叠和规则下重新检查孤岛、窄颈和热路径。
 
@@ -103,7 +103,7 @@ description: >-
 
 修图或生成 CAD/SVG 时，保留用户的连接、封装和机械对象；同时检查文字、丝印、标记、板框和图形之间的遮挡、裁切与归属。视觉整齐是可读性指标，不是电气或制造证明。
 
-施工指南交付格式和各阶段的停止/继续条件见 [references/from-schematic-to-board-guide.md](references/from-schematic-to-board-guide.md)。
+施工指南交付格式和各阶段的停止/继续条件见 [references/from-schematic-to-board-guide.md](references/from-schematic-to-board-guide.md)。 See [routing-playbook.md](references/routing-playbook.md) when the user needs the exact per-net routing procedure.
 
 ## 7.1 同源冻结与首板边界
 

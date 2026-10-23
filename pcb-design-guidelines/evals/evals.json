@@ -78,6 +78,19 @@
         "要求 BOM、CPL、原生应装位号与 DNP/后焊清单分别对账，并说明铜/孔/板框改变不能只改文件名。",
         "明确电脑验证不能代替热、EMC、功能、可靠性和认证实测，给出首板交接的待测边界。"
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Given a verified schematic for a mixed power and high-speed board, write routing-work-order.md for an engineer who must route the board manually. The input identifies real pads and nets for a converter, ADC, USB differential pair, clock, feedback node, ESD device, and test points, but the final stackup and fab limits are pending. Specify route order, pad-to-pad endpoints, allowed layers and reference planes, return-path transitions at vias, topology-specific checks, and completion evidence. Do not invent impedance, width, or clearance values and do not claim that routing or DRC was executed.",
+      "expected_output": "A network-level routing work order that tells the engineer what to route first, how each critical path is physically connected, how to preserve return current, and what must be checked before proceeding.",
+      "files": [],
+      "expectations": [
+        "Separates high-di/dt loops, power distribution, controlled-impedance/clock/differential, analog/feedback, interface protection, and general control routing.",
+        "For every critical class, records real pad endpoints, allowed layers, reference plane, via and return transition, constraint source/state, and a completion check.",
+        "Uses Buck/Boost/LDO or other topology checks as conditional guidance and does not copy one topology's loop into another.",
+        "Keeps feedback and sensitive paths away from switch nodes, preserves differential pairing and continuous reference, and puts ESD discharge current at the interface entry.",
+        "Marks stackup-dependent width, impedance, spacing, and length as pending and clearly separates a work order from executed CAD/DRC evidence."
+      ]
     }
   ]
 }
